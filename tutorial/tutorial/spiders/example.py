@@ -13,6 +13,7 @@ class ExampleSpider(scrapy.Spider):
         print(response)
         page = response.url.split("/")[-2]
         filename = f'{page}.html'
+        data=response.css('div.card') # Selector  List
         with open(filename, 'wb') as f:
             f.write(response.body)
         self.log(f'Saved file {filename}')
